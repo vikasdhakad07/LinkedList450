@@ -1,0 +1,60 @@
+
+Method:TC->O(N+M),SC->O(Max(N,M))
+class Solution{
+    //Function to add two numbers represented by linked list.
+    
+   
+        // code here
+        // return head of sum list
+        static Node reverse(Node head){
+            Node curr=head;
+            Node prev=null;
+            Node next=null;
+            
+            while(curr!=null){
+                next=curr.next;
+                curr.next=prev;
+                prev=curr;
+                curr=next;
+            }
+            return prev;
+        }
+        
+        static Node add(Node first,Node second){
+            Node dummy=new Node(-1);
+            Node tail=dummy;
+            int carry=0;
+            
+            while(first!=null||second!=null){
+            int x=(first!=null)? first.data:0;
+            int y=(second!=null)? second.data:0;
+            
+            int sum=x+y+carry;
+            carry=sum/10;
+            
+            tail.next=new Node(sum%10);
+            tail=tail.next;
+            
+            if(first!=null){
+                first=first.next;
+            }
+            if(second!=null){
+                second=second.next;
+            }
+        }
+        
+        if(carry>0){
+            tail.next=new Node(carry);
+            tail=tail.next;
+        }
+        return dummy.next;
+}    
+         static Node addTwoLists(Node first, Node second){
+             first=reverse(first);
+             second=reverse(second);
+             
+             Node ans=add(first,second);
+             ans=reverse(ans);
+             return ans;
+    }
+}
