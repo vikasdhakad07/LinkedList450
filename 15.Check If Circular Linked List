@@ -1,0 +1,20 @@
+Method:Expected Time Complexity: O(N).
+Expected Auxiliary Space: O(1).
+
+class GfG
+{
+    boolean isCircular(Node head)
+    {
+	// Your code here
+	if(head==null) return true;
+	
+	Node tmp=head;
+	while(tmp!=null){
+	    tmp=tmp.next;
+	    if(tmp==head){
+	        return true;
+	    }
+	}
+	return false;
+    }
+}
