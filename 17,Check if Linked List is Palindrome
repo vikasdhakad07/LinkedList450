@@ -1,0 +1,43 @@
+class Solution
+{
+    Node findMid(Node head){
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null&&fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return slow;
+    }
+    
+    Node reverse(Node head){
+        Node prev=null;
+        Node next=null;
+        Node curr=head;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+    //Function to check whether the list is palindrome.
+    boolean isPalindrome(Node head) 
+    {
+        //Your code here
+        Node mid=findMid(head);
+        Node last=reverse(mid);
+        Node curr=head;
+        while(last!=null){
+            if(curr.data!=last.data){
+                return false;
+            }
+            curr=curr.next;
+            last=last.next;
+            
+        }
+        return true;
+    }    
+}
+
