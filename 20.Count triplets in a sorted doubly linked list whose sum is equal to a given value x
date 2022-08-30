@@ -1,0 +1,29 @@
+Method:TC->Expected Time Complexity: O(N2)
+Expected Auxiliary Space: O(N)
+
+class Solve
+{
+    static int countTriplets(Node head, int x) 
+    { 
+        //code here.
+        int count=0;
+        Set<Integer> hs=new HashSet<>();
+        Node temp1=head;
+        Node temp2=head;
+        while(temp1!=null){
+            temp2=temp1.next;
+            while(temp2!=null){
+                if(hs.contains(x-(temp1.data+temp2.data))){
+                    count++;
+                }
+                else{
+                    hs.add(temp2.data);
+                }
+                temp2=temp2.next;
+            }
+            hs.clear();
+            temp1=temp1.next;
+        }
+        return count;
+    } 
+}
