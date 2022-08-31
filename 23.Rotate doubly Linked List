@@ -1,0 +1,31 @@
+class Solution{
+	public Node rotateDLL(Node start, int p) {
+		//Write your code here
+	if(start==null||start.next==null){
+	    return start;
+	}
+	
+	if(p==0){
+	    return start;
+	}
+	
+	Node curr=start;
+	int count=1;
+	while(count<p&&curr!=null){
+	    curr=curr.next;
+	    count++;
+	}
+	
+	Node nthNode=curr;
+	while(curr.next!=null){
+	    curr=curr.next;
+	}
+	
+	curr.next=start;
+	start.prev=curr;
+	start=nthNode.next;
+	start.prev=null;
+	nthNode.next=null;
+	return start;
+	}
+}
