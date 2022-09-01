@@ -1,0 +1,49 @@
+Method:Expected Time Complexity: O(nk Logk)
+Expected Auxiliary Space: O(k)
+
+class Solution
+{
+    Node mergeTwo(Node[]arr,int a,int b){
+        if(a>b){
+            return null;       
+            }
+            if(a==b){
+                return arr[a];
+            }
+            int mid=a+(b-a)/2;
+            Node list1=mergeTwo(arr,a,mid);
+            Node list2=mergeTwo(arr,mid+1,b);
+            return mergeTwoList(list1,list2);
+    }
+          Node mergeTwoList(Node list1,Node list2){
+              Node head=new Node(-1);
+                Node p=head;
+                Node p1=list1;
+                Node p2=list2;
+                
+                while(p1!=null&&p2!=null){
+                if(p1.data<p2.data){
+                    p.next=p1;
+                    p1=p1.next;
+                }
+                else{
+                    p.next=p2;
+                    p2=p2.next;
+                }
+                p=p.next;
+                }
+                
+                if(p1!=null) {p.next=p1;}
+                if(p2!=null) {p.next=p2;}
+                return head.next;
+            }
+    //Function to merge K sorted linked list.
+    Node mergeKList(Node[]arr,int K)
+    {
+        //Add your code here.
+        if(arr.length<=0){
+            return null;
+        }
+        return mergeTwo(arr,0,arr.length-1);
+    }
+}
