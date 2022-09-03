@@ -1,0 +1,28 @@
+Method:Expected Time Complexity: O(N).
+Expected Auxiliary Space: O(1).
+
+class GfG
+{
+    //Function to find the data of nth node from the end of a linked list.
+    int getNthFromLast(Node head, int n)
+    {
+    	// Your code here	
+    	Node slow=head;
+    	Node fast=head;
+    	int length=0;
+    	while(fast!=null){
+    	    fast=fast.next;
+    	    length++;
+    	    if(length>n){
+    	        slow=slow.next;
+    	    }
+    	}
+    	
+    	if(length<n){
+    	    return -1;
+    	}
+    	else{
+    	    return slow.data;
+    	}
+    }
+}
