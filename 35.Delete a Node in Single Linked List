@@ -1,0 +1,20 @@
+
+
+class GfG
+{
+    Node deleteNode(Node head, int x)
+    {
+	// Your code here
+	if(x==1){
+	    head=head.next;
+	}
+	else{
+	    Node curr=head;
+	    for(int i=1;i<x-1;i++){
+	        curr=curr.next;
+	    }
+	    curr.next=curr.next.next;
+	}
+	return head;
+    }
+}
