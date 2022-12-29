@@ -1,0 +1,50 @@
+Method 01:Swap Kth nodes from ends
+
+
+class GFG
+{
+    //Function to swap Kth node from beginning and end in a linked list.
+    Node swapkthnode(Node head, int num, int K)
+    {
+        // your code here
+        if(K>num){
+            return head;
+        }
+        
+        Node begin=head;
+        Node parent=null;
+        for(int i=1;i<K;i++){
+            parent=begin;
+            begin=begin.next;
+        }
+        
+        int end=num-K+1;
+        Node parentEnd=null;
+        Node endNode=head;
+        for(int i=1;i<end;i++){
+            parentEnd=endNode;
+            endNode=endNode.next;
+        }
+        
+        if(parent!=null){
+            parent.next=endNode;
+        }
+        
+        if(parentEnd!=null){
+            parentEnd.next=begin;
+        }
+        
+        Node temp=endNode.next;
+        endNode.next=begin.next;
+        begin.next=temp;
+        if(K==1){
+            return endNode;
+        }
+        else if(K==num){
+            return begin;
+        }
+        else{
+            return head;
+        }
+    }
+}
