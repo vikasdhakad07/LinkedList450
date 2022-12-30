@@ -1,0 +1,21 @@
+Method 01:Modular Node
+
+
+class GfG
+{
+    public static int moduarNode(Node head, int k)
+    {
+        // add your code here
+        int i=1;
+        int result=-1;
+        Node curr=head;
+        while(curr!=null){
+            if(i%k==0){
+                result=curr.data;
+            }
+            i++;
+            curr=curr.next;
+        }
+        return result;
+    }
+}
