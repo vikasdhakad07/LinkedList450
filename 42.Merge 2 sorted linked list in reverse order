@@ -1,0 +1,54 @@
+Method 01:Merge 2 sorted linked list in reverse order
+
+
+class GfG
+{
+    Node mergeResult(Node node1, Node node2)
+    {
+	// Your code here	
+	Node head=new Node(-1);
+	Node temp=head;
+	Node temp1=reverse(node1);
+	Node temp2=reverse(node2);
+	
+	while(temp1!=null&&temp2!=null){
+	    if(temp1.data>temp2.data){
+	        temp.next=temp1;
+	        temp1=temp1.next;
+	    }
+	    else{
+	        temp.next=temp2;
+	        temp2=temp2.next;
+	    }
+	    
+	    temp=temp.next;
+	}
+	    while(temp1!=null){
+	         temp.next=temp1;
+	        temp1=temp1.next;
+	        temp=temp.next;
+	    }
+	    
+	    while(temp2!=null){
+	         temp.next=temp2;
+	        temp2=temp2.next;
+	        temp=temp.next;
+	    }
+	
+	return head.next;
+    }
+    
+    Node reverse(Node head){
+        Node prev=null;
+        Node curr=head;
+        Node next=null;
+        
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+}
