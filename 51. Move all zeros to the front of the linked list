@@ -1,0 +1,23 @@
+Method 01: Move all zeros to the front of the linked list
+
+
+class GfG{
+    public Node moveZeroes(Node head){
+        //Your Code here.
+          if(head==null||head.next==null)
+        return head;
+        Node cur=head.next;
+        Node prev=head;
+        while(cur!=null){
+            if(cur.data==0&&prev!=null){
+                prev.next=cur.next;
+                cur.next=head;
+                head=cur;
+                cur=prev;
+            }
+            prev=cur;
+            cur=cur.next;
+        }
+        return head;
+    }
+}
