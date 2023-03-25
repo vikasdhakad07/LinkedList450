@@ -1,0 +1,17 @@
+Method 01: Decimal Equivalent of Binary Linked List
+
+
+class gfg
+{
+   long DecimalValue(Node head)
+   {
+ 	long sum=0;
+ 	long mod=1000000007;
+ 	Node cur=head;
+ 	while(cur!=null){
+ 	    sum=(sum*2)%mod+(cur.data)%mod;
+ 	    cur=cur.next;
+ 	}
+ 	return sum;
+   }
+}
