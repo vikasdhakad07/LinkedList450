@@ -1,0 +1,45 @@
+Method 01: Leaves to DLL
+
+
+class Tree{
+    // return the head of the DLL and remove those node from the tree as well.
+    
+    public static Node solve(Node root, ArrayList<Node> al){
+        if(root==null){
+            return null;
+        }
+        
+        if(root.left==null&&root.right==null){
+            al.add(root);
+            return null;
+        }
+        
+        root.left=solve(root.left, al);
+        root.right=solve(root.right, al);
+        return root;
+    }
+    public Node convertToDLL(Node root)
+    {
+        // Code here
+        if(root==null){
+            return null;
+        }
+        
+        ArrayList<Node> al=new ArrayList<>();
+        solve(root, al);
+        Node head=al.get(0);
+        Node tail=al.get(0);
+        
+        for(int i=1;i<al.size();i++){
+            Node cur=al.get(i);
+            tail.right=cur;
+            cur.left=tail;
+            tail=cur;
+        }
+        
+        tail.right=null;
+        head.left=null;
+        return head;
+    }
+    
+}
