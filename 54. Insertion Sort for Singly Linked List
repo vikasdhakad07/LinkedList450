@@ -1,0 +1,27 @@
+Method 01: Insertion Sort for Singly Linked List
+
+
+class Solution
+{
+    public static Node insertionSort(Node head_ref)
+    {
+        //code here
+        int temp;
+        Node prev=null;
+        Node cur=head_ref;
+        while(cur!=null){
+            prev=cur.next;
+            while(prev!=null){
+                if(cur.data>prev.data){
+                temp=cur.data;
+                cur.data=prev.data;
+                prev.data=temp;
+            }
+            prev=prev.next;
+            }
+            cur=cur.next;
+        }
+        
+        return head_ref;
+    }
+}
