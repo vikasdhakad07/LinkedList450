@@ -1,0 +1,42 @@
+Method 01: Length of longest palindrome in linked list
+
+
+class GfG
+{
+        public static int maxPalindrome(Node head)
+        {
+          //add code here.
+          Node cur=head;
+          Node prev=null;
+          
+          int ans=0;
+          while(cur!=null){
+              Node next=cur.next;
+              cur.next=prev;
+              
+              ans=Math.max(ans, 2*count(prev, next)+1);
+              ans=Math.max(ans, 2*count(cur, next));
+            prev=cur;
+            cur=next;
+          }
+          
+          return ans;
+        }
+        
+        public static int count(Node first, Node second){
+            Node a=first;
+            Node b=second;
+            int cnt=0;
+            while(a!=null&&b!=null){
+                if(a.data==b.data){
+                    a=a.next;
+                    b=b.next;
+                    cnt++;
+                }
+                else{
+                    break;
+                }
+            }
+            return cnt;
+        }
+}
