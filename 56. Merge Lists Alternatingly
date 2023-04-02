@@ -1,0 +1,27 @@
+Method 01: Merge Lists Alternatingly
+
+
+class Solution {
+    
+    public void mergeAlt(Node head1, Node head2){
+        //write your code here, and print the result
+        Node cur1=head1;
+        Node cur2=head2;
+        
+        while(cur1!=null&&cur2!=null){
+            System.out.print(cur1.data+" ");
+            System.out.print(cur2.data+" ");
+            cur1=cur1.next;
+            cur2=cur2.next;
+        }
+            while(cur1!=null){
+                System.out.print(cur1.data+" ");
+                cur1=cur1.next;
+            }
+             System.out.println();
+            while(cur2!=null){
+                System.out.print(cur2.data+" ");
+                cur2=cur2.next;
+            }
+    }
+}
