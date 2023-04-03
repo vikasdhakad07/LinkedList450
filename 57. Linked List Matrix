@@ -1,0 +1,22 @@
+Method 01: Linked List Matrix
+
+
+class GFG
+{
+    static Node F(int r,int c,int n,int m,int arr[][]){
+        if(r>=n||c>=m){
+            return null;
+        }
+        
+        Node cur=new Node(arr[r][c]);
+        cur.right=F(r,c+1, n, m, arr);
+        cur.down=F(r+1,c, n, m, arr);
+        
+        return cur;
+    }
+    static Node construct(int arr[][],int n)
+    {
+        //Add your code here.
+          return F(0,0,n,arr[0].length,arr);
+    }
+}
