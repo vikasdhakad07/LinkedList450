@@ -1,0 +1,39 @@
+Method 01: Union of Two Linked Lists
+
+
+class Sol
+{
+	public static Node findUnion(Node head1,Node head2)
+	{
+	    //Add your code here.
+	     Set<Integer> s=new HashSet<>();
+	    Node l=new Node(0);
+	    Node ll=l;
+	    while(head1!=null){
+	        s.add(head1.data);
+	        head1=head1.next;
+	    }
+	    while(head2!=null){
+	        s.add(head2.data);
+	        head2=head2.next;
+	    }
+	      ArrayList<Integer> a = new ArrayList<Integer>(s);
+      Collections.sort(a);
+      Node head =null;
+      Node tail = null;
+      for(int new_data : a){
+          if(head==null){
+              Node newNode = new Node(new_data);
+              head = newNode;
+              tail = newNode;
+          }
+          else{
+               Node newNode = new Node(new_data);
+               tail.next = newNode;
+               tail = newNode;
+              
+          }
+      }
+      return head;
+	}
+}
